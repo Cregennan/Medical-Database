@@ -90,3 +90,26 @@ void MedicalOrganization::PrintCardsArray() {
 	}
 	std::cout << table.to_string() << std::endl;
 }
+void MedicalOrganization::EditCardDecorator() {
+	while (true) {
+		this->PrintCardsArray();
+		int i = Helper::RequireInt("Enter MedicalCard ID");
+		if (this->Cards.size() == 0) {
+			std::cout << "No Cards in Organization" << std::endl;
+			continue;
+		}
+		if (i > this->Cards.size() - 1 || i < 0) {
+			std::cout << "Invalid Card ID" << std::endl;
+			continue;
+		}
+		Helper::EditMedicalCard(this->Cards[i]);
+		std::string again = Helper::RequireString("Do you want to edit another Medical Card? Enter y or n");
+		if (again == "n") {
+			break;
+		}
+		else {
+			continue;
+		}
+	}
+	
+}

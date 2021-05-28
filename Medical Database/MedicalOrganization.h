@@ -31,6 +31,7 @@ public:
 	void Save(std::string filename);
 	void PrintAllCards();
 	void PrintCardsArray();
+	void EditCardDecorator();
 	
 
 };

@@ -34,11 +34,18 @@ int Helper::RequireInt(std::string message = "") {
     std::cout << message << std::endl << "> ";
     std::string line;
     std::getline(std::cin, line);
-    std::istringstream tmp(line);
-    tmp >> a >> std::ws;
-    std::cout << std::endl;
-    std::cin.clear();
-    return a;
+    if (line.size() != 0) {
+        std::istringstream tmp(line);
+        tmp >> a >> std::ws;
+        std::cout << std::endl;
+        std::cin.clear();
+        return a;
+    }
+    else {
+        throw std::exception("Invalid Input");
+    }
+    
+   
 }
 
 MedicalCard* Helper::CreateMedicalCard() {
@@ -69,4 +76,43 @@ Record* Helper::CreateRecord() {
 
     Record* R = new Record(DateTime, Diagnosis, Recs);
     return R;
+}
+
+void Helper::EditMedicalCard(MedicalCard* Card) {
+    std::string Name = Helper::RequireString("Enter patient's new name or NO to leave as is");
+    if (Name != "NO") {
+        Card->Name = Name;
+    }
+    int Age = Helper::RequireInt("Enter new patient's new age or 0 to leave as is");
+    if (Age != 0) {
+        Card->Age = Age;
+    }
+    std::string _editR = Helper::RequireString("Do you want to edit the Records of this patient? Enter y or n");
+    if (_editR == "y") {
+        Helper::EditMedicalCardRecords(Card);
+    }
+}
+void Helper::EditMedicalCardRecords(MedicalCard* Card) {
+    while (true) {
+        std::cout << Card->Format2Row() << std::endl;
+        int _size = Card->Records.size();
+        int i = Helper::RequireInt("Enter the ID of Record");
+        if (i > _size - 1 || i < 0) {
+            std::cout << "Wrong Record ID" << std::endl;
+            continue;
+        }
+        std::string DateTime = Helper::RequireString("Enter new DateTime for this Record");
+        Card->Records[i]->DateTime = DateTime;
+        std::string Diagnosis = Helper::RequireString("Enter new Diagnosis for this Record");
+        Card->Records[i]->Diagnosis = Diagnosis;
+        std::string _Recs = Helper::RequireString("Enter new Recommendations divided by comma");
+        Card->Records[i]->Results = Helper::Parse(_Recs, ",");
+        std::string again = Helper::RequireString("Do you want to edit another Record? y or n");
+        if (again == "n") {
+            break;
+        }
+        else {
+            continue;
+        }      
+    }
 }

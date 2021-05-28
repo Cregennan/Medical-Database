@@ -25,7 +25,15 @@ int main()
 			cout << "5: Edit Medical Card" << endl;
 
 			cout << "0: Save and exit" << endl;
-			int option = Helper::RequireInt("");
+			int option = 0;
+			try {
+				option = Helper::RequireInt("");
+			}
+			catch (std::exception e) {
+				cout << e.what() << endl;
+				continue;
+			}
+			
 			
 			if (option == 1) {
 				MedicalCard* Card = Helper::CreateMedicalCard();
@@ -63,8 +71,7 @@ int main()
 			}
 			if (option == 5) {
 				try {
-					Centre.PrintCardsArray();
-					//int id
+					Centre.EditCardDecorator();
 				}
 				catch (std::exception e) {
 					cout << e.what() << endl;

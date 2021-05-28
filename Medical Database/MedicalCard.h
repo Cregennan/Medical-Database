@@ -10,6 +10,7 @@ class MedicalCard
     
 public:
     friend class MedicalOrganization;
+    friend class Helper;
     unsigned int GetHash();
     void AddRecord(Record* record);
     void RemoveRecord(int ID);
@@ -17,7 +18,5 @@ public:
     std::string ToString();
     std::string Format2File();
     std::string Format2Row();
-    void Edit();
-    void EditRecord(int ID);
 };
 

@@ -4,6 +4,7 @@
 class Record
 {
 	friend class MedicalCard;
+	friend class Helper;
 	std::string DateTime;
 	std::string Diagnosis;
 	std::vector<std::string> Results;

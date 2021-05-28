@@ -11,7 +11,8 @@ public:
 	static int RequireInt(std::string message);
 	static MedicalCard* CreateMedicalCard();
 	static Record* CreateRecord();
-
+	static void EditMedicalCard(MedicalCard* Card);
+	static void EditMedicalCardRecords(MedicalCard* Card);
 
 
 };

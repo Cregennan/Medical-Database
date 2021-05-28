@@ -1,4 +1,5 @@
 #include "MedicalCard.h"
+#include "Helper.h"
 #include <iostream>
 #include "fort.hpp"
 MedicalCard::MedicalCard(std::string Name, int Age) {
@@ -54,12 +55,5 @@ std::string MedicalCard::Format2Row() {
 	}
 
 	return table.to_string();
-
-}
-
-void MedicalCard::Edit() {
-
-}
-void MedicalCard::EditRecord(int ID) {
 
 }
