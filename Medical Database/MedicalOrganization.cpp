@@ -32,7 +32,7 @@ MedicalCard* MedicalOrganization::FindCard(std::string Name) {
 	return answer;
 }
 void MedicalOrganization::Welcome() {
-	std::cout << "+------------------------------------------------------+" << std::endl << "|        Welcome to RadioNurshat Medical Clinic        |" << std::endl << "+------------------------------------------------------+" << std::endl;
+	std::cout << "+------------------------------------------------------+" << std::endl << "|        Welcome to Medical Clinic        |" << std::endl << "+------------------------------------------------------+" << std::endl;
 }
 
 void MedicalOrganization::Load(std::string filename) {
